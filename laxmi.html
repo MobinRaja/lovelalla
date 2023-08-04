@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Love Website for Laxmi</title>
+    <meta charset="UTF-8">
+    <style>
+        /* Add your CSS styles for heart, love letter, and animations here */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: lightcoral;
+        }
+
+        .heart {
+            background: red;
+            position: relative;
+            height: 100px;
+            width: 100px;
+            /* Animation */
+            transform: rotate(-45deg) scale(1);
+            animation: pulse 2s linear infinite;
+        }
+
+        .heart::after {
+            background: inherit;
+            border-radius: 50%; /* To make circle */
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 0;
+            height: 100px;
+            width: 100px;
+        }
+
+        .heart::before {
+            background: inherit;
+            border-radius: 50%; /* To make circle */
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -50%;
+            height: 100px;
+            width: 100px;
+        }
+
+        #love-letter {
+            display: none;
+            font-size: 20px;
+            text-align: center;
+            white-space: pre-line;
+            overflow: hidden;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px #ff00ff;
+            padding: 20px;
+        }
+
+        /* CSS animation to reveal love letter line by line */
+        @keyframes line-by-line-anim {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .line-by-line {
+            opacity: 0;
+            animation: line-by-line-anim 3s forwards;
+            animation-delay: 1s; /* Delay each line to start glowing */
+        }
+
+        .glow {
+            animation: glowing 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowing {
+            0% { box-shadow: 0 0 5px #ff00ff; }
+            100% { box-shadow: 0 0 20px #ff00ff; }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: rotate(-45deg) scale(1);
+                opacity: 0;
+            }
+            50% {
+                transform: rotate(-45deg) scale(1.3);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(-45deg) scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="heart-container">
+        <div class="heart" onclick="showLoveLetter()"></div>
+        <div id="love-letter">
+            <p class="line-by-line">प्रिय लक्ष्मी,</p>
+            <p class="line-by-line glow">तुमसे मिलकर मुझे प्यार हो गया।</p>
+            <p class="line-by-line glow">मैं तुम्हें कभी नहीं छोड़ूंगा।</p>
+            <p class="line-by-line glow">हमेशा तुम्हें प्यार करूंगा।</p>
+            <p class="line-by-line glow">तुम मेरा सबकुछ हो, और मैं तुमसे हमेशा प्रेम करूँगा।</p>
+            <p class="line-by-line glow">तुम्हारे साथ हर पल बिताना मेरे लिए अनमोल है।</p>
+            <p class="line-by-line glow">तुम्हारी मुस्कान और हंसी मेरे दिन को रौंगते देती है।</p>
+            <p class="line-by-line glow">तुम्हारे साथ होना मेरे जीवन का सबसे सुंदर सफर है।</p>
+            <p class="line-by-line glow">तुम्हारी हर बात मेरे दिल को छू जाती है।</p>
+            <p class="line-by-line glow">तुम्हारे बिना जीवन अधूरा है, और तुम्हारे साथ सब पूरा है।</p>
+            <p class="line-by-line glow">तुम्हारा मोबिन</p>
+        </div>
+    </div>
+
+    <script>
+        function showLoveLetter() {
+            var loveLetter = document.getElementById("love-letter");
+            loveLetter.style.display = "block";
+
+            // Get all paragraphs with class "line-by-line"
+            var paragraphs = document.getElementsByClassName("line-by-line");
+
+            // Use setTimeout to apply animation to each paragraph after a delay
+            for (let i = 0; i < paragraphs.length; i++) {
+                setTimeout(function() {
+                    paragraphs[i].style.opacity = "1";
+                }, i * 3000); // Adjust the delay time as needed (milliseconds)
+            }
+        }
+    </script>
+</body>
+</html>
